@@ -1,0 +1,28 @@
+# Core FastAPI Framework and Server
+fastapi                   # The main web framework
+uvicorn[standard]         # ASGI server to run FastAPI, [standard] includes extras like websockets and watchfiles for --reload
+
+# Configuration and Data Validation
+pydantic                  # Data validation and settings management (core dependency of FastAPI)
+pydantic-settings         # For loading settings from .env files and environment variables easily (replaces need for python-dotenv directly in most cases)
+
+# HTTP Client for Calling External APIs (YouTube, Translation, LinkedIn etc.)
+httpx                     # Modern async HTTP client, works well with FastAPI
+
+# Authentication (Specifically for LinkedIn OAuth)
+requests-oauthlib         # Handles OAuth 1 and OAuth 2 flows (builds on the 'requests' library)
+# 'requests' will be installed automatically as a dependency of requests-oauthlib
+
+# --- Optional Packages (Add if/when needed) ---
+
+# Database ORM and Driver (Uncomment and choose one driver if you add database storage)
+# sqlalchemy              # Object Relational Mapper for interacting with databases
+# psycopg2-binary         # Driver for PostgreSQL (use this or psycopg2)
+# databases[postgresql]   # Async database toolkit (alternative/complementary to SQLAlchemy async)
+# databases[sqlite]       # For async SQLite support
+
+# NLP for Profile/Goal Analysis (Install spaCy model separately after pip install)
+# spacy                   # Industrial-strength Natural Language Processing library
+# Example: after pip install spacy, run: python -m spacy download en_core_web_sm
+
+# Add any other specific libraries you might need (e.g., for image processing, specific AI tasks)
