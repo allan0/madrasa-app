@@ -1,0 +1,56 @@
+.loading-screen {
+  display: flex;
+  flex-direction: column; /* Stack word and spinner */
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color defaults handled by Tailwind classes */
+  z-index: 9999;
+  transition: opacity 0.5s ease-out; /* For fading out later */
+}
+
+.loading-word {
+  display: inline-block;
+  font-size: 3rem; /* Adjust size */
+  font-weight: bold;
+  letter-spacing: 0.1em; /* Adjust spacing */
+}
+
+.loading-letter {
+  display: inline-block; /* Needed for transform */
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  transition: opacity 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), /* Fancy ease */
+              transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Text color will be applied via Tailwind class */
+}
+
+.loading-letter.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Optional Spinner */
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1); /* Light border */
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  /* Dynamic border-top-color would be tricky with pure CSS/Tailwind variables */
+  /* Consider using an SVG spinner or conditional rendering based on theme */
+   border-left-color: currentColor; /* Use the text color from Tailwind */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Dark mode adjustments (if needed, usually handled by Tailwind) */
+/* .dark .loading-screen { ... } */
+/* .dark .loading-spinner { ... } */
